@@ -101,7 +101,7 @@ class UsbModemConnector(HdlcMixin, BaseInput):
                                "you're not root. Please re-run with sudo to " +
                                'take appropriate action.') % proc_name)
                         
-                        exit()
+                        #exit()
                         
                     for fd in listdir(fds_dir):
                     

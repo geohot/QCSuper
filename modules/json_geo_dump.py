@@ -46,7 +46,7 @@ class JsonGeoDumper(EnableLogMixin):
         self.last_time_geolocation_was_checked = 0
         self.lat, self.lng = None, None
 
-    def on_init(self):
+    def on_init_nope(self):
         print("on init super")
         super().on_init()
         print("on init")
