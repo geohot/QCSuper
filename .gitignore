@@ -3,3 +3,5 @@ __pycache__/
 config.py
 build/
 .~lock.*
+.*.swp
+.*.swo

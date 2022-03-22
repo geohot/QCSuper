@@ -3,7 +3,7 @@ from pathlib import Path
 from subprocess import Popen
 from typing import Any
 
-from inputs.adb import AdbConnector
+from inputr.adb import AdbConnector
 
 class AdbWsl2Connector:
     """

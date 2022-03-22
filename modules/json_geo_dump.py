@@ -8,6 +8,9 @@ from subprocess import run
 from json import dumps
 from time import time
 
+from protocol.subsystems import *
+from protocol.messages import *
+
 from modules._enable_log_mixin import EnableLogMixin, TYPES_FOR_RAW_PACKET_LOGGING
 
 """
@@ -23,7 +26,12 @@ from modules._enable_log_mixin import EnableLogMixin, TYPES_FOR_RAW_PACKET_LOGGI
     This module is meant to be used with the "ADB" input.
 """
 
-DELAY_CHECK_GEOLOCATION = 10 # Check GPS location every 10 seconds
+DELAY_CHECK_GEOLOCATION = 1 # Check GPS location every 10 seconds
+
+CGPS_DIAG_PDAPI_CMD = 100
+CGPS_OEM_CONTROL = 202
+GPSDIAG_OEMFEATURE_DRE = 1
+GPSDIAG_OEM_DRE_ON = 1
 
 class JsonGeoDumper(EnableLogMixin):
     
@@ -37,8 +45,25 @@ class JsonGeoDumper(EnableLogMixin):
         
         self.last_time_geolocation_was_checked = 0
         self.lat, self.lng = None, None
+
+    def on_init(self):
+        print("on init super")
+        super().on_init()
+        print("on init")
+        opcode, payload = self.diag_input.send_recv(DIAG_SUBSYS_CMD_F, pack('<BHBBIIII',
+          DIAG_SUBSYS_GPS,
+          CGPS_DIAG_PDAPI_CMD,
+          CGPS_OEM_CONTROL,
+          1,
+          GPSDIAG_OEMFEATURE_DRE,
+          GPSDIAG_OEM_DRE_ON,
+          0,0
+        )
+        , accept_error = False)
+        print(opcode, payload)
     
     def on_log(self, log_type, log_payload, log_header, timestamp = 0):
+        print("on_log %x" % log_type, len(log_payload), log_header, timestamp)
         
         if hasattr(self.diag_input, 'get_gps_location'):
             

@@ -13,11 +13,11 @@ from modules.dlf_dump import DlfDumper
 from modules.info import InfoRetriever
 from modules._utils import FileType
 
-from inputs.json_geo_read import JsonGeoReader
-from inputs.usb_modem import UsbModemConnector
-from inputs.dlf_read import DlfReader
-from inputs.adb import AdbConnector
-from inputs.adb_wsl2 import AdbWsl2Connector
+from inputr.json_geo_read import JsonGeoReader
+from inputr.usb_modem import UsbModemConnector
+from inputr.dlf_read import DlfReader
+from inputr.adb import AdbConnector
+from inputr.adb_wsl2 import AdbWsl2Connector
 
 parser = ArgumentParser(description = 'A tool for communicating with the Qualcomm DIAG protocol (also called QCDM or DM).')
 

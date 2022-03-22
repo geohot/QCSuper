@@ -14,8 +14,8 @@ try:
 except ImportError:
     setpgrp = None
 
-from inputs._hdlc_mixin import HdlcMixin
-from inputs._base_input import BaseInput
+from inputr._hdlc_mixin import HdlcMixin
+from inputr._base_input import BaseInput
 
 INPUTS_DIR = dirname(realpath(__file__))
 ROOT_DIR = realpath(INPUTS_DIR + '/..')

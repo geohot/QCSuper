@@ -45,31 +45,49 @@ LOG_CONFIG_SUCCESS_S = 0
     to add it to the list below.
 """
 
-TYPES_FOR_RAW_PACKET_LOGGING = [
-    
-    # Layer 2:
-    
-    LOG_GPRS_MAC_SIGNALLING_MESSAGE_C, # 0x5226
+"""
+# Layer 2:
 
-    # Layer 3:
-    
-    LOG_GSM_RR_SIGNALING_MESSAGE_C, # 0x512f
-    WCDMA_SIGNALLING_MESSAGE, # 0x412f
-    LOG_LTE_RRC_OTA_MSG_LOG_C, # 0xb0c0
-    LOG_NR_RRC_OTA_MSG_LOG_C, # 0xb821
-    
-    # NAS:
-    
-    LOG_UMTS_NAS_OTA_MESSAGE_LOG_PACKET_C, # 0x713a
-    
-    LOG_LTE_NAS_ESM_OTA_IN_MSG_LOG_C, # 0xb0e2
-    LOG_LTE_NAS_ESM_OTA_OUT_MSG_LOG_C, # 0xb0e3
-    LOG_LTE_NAS_EMM_OTA_IN_MSG_LOG_C, # 0xb0ec
-    LOG_LTE_NAS_EMM_OTA_OUT_MSG_LOG_C, # 0xb0ed
-    
-    # User IP traffic:
-    
-    LOG_DATA_PROTOCOL_LOGGING_C # 0x11eb
+LOG_GPRS_MAC_SIGNALLING_MESSAGE_C, # 0x5226
+
+# Layer 3:
+
+LOG_GSM_RR_SIGNALING_MESSAGE_C, # 0x512f
+WCDMA_SIGNALLING_MESSAGE, # 0x412f
+LOG_LTE_RRC_OTA_MSG_LOG_C, # 0xb0c0
+LOG_NR_RRC_OTA_MSG_LOG_C, # 0xb821
+
+# NAS:
+
+LOG_UMTS_NAS_OTA_MESSAGE_LOG_PACKET_C, # 0x713a
+
+LOG_LTE_NAS_ESM_OTA_IN_MSG_LOG_C, # 0xb0e2
+LOG_LTE_NAS_ESM_OTA_OUT_MSG_LOG_C, # 0xb0e3
+LOG_LTE_NAS_EMM_OTA_IN_MSG_LOG_C, # 0xb0ec
+LOG_LTE_NAS_EMM_OTA_OUT_MSG_LOG_C, # 0xb0ed
+
+# User IP traffic:
+
+LOG_DATA_PROTOCOL_LOGGING_C, # 0x11eb
+"""
+
+# GPS packets
+TYPES_FOR_RAW_PACKET_LOGGING = [
+    0x1476,
+    0x1477,
+    0x1478,
+    0x1480,
+    0x1756,
+    0x1886,
+
+    0x14DE,
+    0x14E1,
+
+    0x1838,
+    0x147B,
+    0x147E,
+    0x1488,
+    0x1516,
 ]
 
 class EnableLogMixin:

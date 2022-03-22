@@ -14,8 +14,8 @@ try:
 except ImportError:
     pass
 
-from inputs._hdlc_mixin import HdlcMixin
-from inputs._base_input import BaseInput
+from inputr._hdlc_mixin import HdlcMixin
+from inputr._base_input import BaseInput
 from protocol.messages import *
 
 """
