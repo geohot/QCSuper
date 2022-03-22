@@ -64,6 +64,24 @@ class JsonGeoDumper(EnableLogMixin):
     
     def on_log(self, log_type, log_payload, log_header, timestamp = 0):
         print("on_log %x" % log_type, len(log_payload), log_header, timestamp)
+
+        if log_type == 0x1477:
+          #from hexdump import hexdump
+          #hexdump(log_payload)
+          dat = unpack("<BIHIffffB", log_payload[0:28])
+          print(dat)
+          sats = log_payload[28:]
+          print(len(sats), len(sats)/dat[-1])
+          L = 70
+          for i in range(dat[-1]):
+            sat = unpack("<BbBBBBBHhBHIffffIBIffiHffBI", sats[L*i:L*i+L])
+            print("  ", sat)
+        if log_type == 0x1480:
+          print("glonass")
+        if log_type == 0x1756:
+          print("beidou")
+        if log_type == 0x1886:
+          print("gal")
         
         if hasattr(self.diag_input, 'get_gps_location'):
             
